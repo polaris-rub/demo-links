@@ -1,0 +1,597 @@
+<title>POLARIS Resources</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Lato:wght@400;700;900&display=swap">
+<style>
+  :root {
+    --bg: #fcfcfc;
+    --surface: #ffffff;
+    --surface-hover: #f2f8fc;
+    --text: #404040;
+    --text-muted: #6b6b6b;
+    --accent: #2980b9;
+    --accent-dark: #1c608e;
+    --dark: #343131;
+    --line: #e1e4e5;
+    --line-soft: #ebedee;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1a1a;
+      --surface: #252323;
+      --surface-hover: #2c333a;
+      --text: #e3e3e3;
+      --text-muted: #a8a8a8;
+      --accent: #5aa6d6;
+      --accent-dark: #86c0e6;
+      --dark: #0f0e0e;
+      --line: #3c3939;
+      --line-soft: #322f2f;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #1c1a1a;
+    --surface: #252323;
+    --surface-hover: #2c333a;
+    --text: #e3e3e3;
+    --text-muted: #a8a8a8;
+    --accent: #5aa6d6;
+    --accent-dark: #86c0e6;
+    --dark: #0f0e0e;
+    --line: #3c3939;
+    --line-soft: #322f2f;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .topbar {
+    background: var(--accent);
+    border-bottom: 4px solid var(--dark);
+  }
+
+  .topbar-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fcfcfc;
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+
+  .brand svg { flex: none; }
+
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  header { margin-bottom: 3rem; }
+
+  .eyebrow {
+    font-family: Lato, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.9rem;
+  }
+
+  h1 {
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5.5vw, 2.75rem);
+    line-height: 1.1;
+    margin: 0 0 0.4rem;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .subtitle {
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin: 0 0 1.4rem;
+  }
+
+  .lede {
+    max-width: 42rem;
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  .lede strong { font-weight: 700; }
+
+  .qr-box {
+    margin-top: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 3px;
+    padding: 0.9rem 1.2rem;
+  }
+
+  .qr-box img {
+    width: 84px;
+    height: 84px;
+    flex: none;
+    background: #fff;
+    border-radius: 2px;
+    padding: 4px;
+  }
+
+  .qr-box-text { display: flex; flex-direction: column; gap: 0.25rem; }
+
+  .qr-box-label {
+    font-family: Lato, sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text);
+  }
+
+  .qr-box-url {
+    font-family: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+
+  section + section { margin-top: 2.5rem; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-head h2 {
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin: 0;
+    color: var(--text);
+  }
+
+  .section-head .count {
+    font-family: Lato, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: var(--line-soft);
+    border-radius: 3px;
+    padding: 0.05rem 0.45rem;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: 3px;
+    padding: 1.05rem 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .link-main { flex: 1; min-width: 0; }
+
+  .link-qr {
+    flex: none;
+    width: 64px;
+    height: 64px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 4px;
+  }
+
+  .link-card:hover,
+  .link-card:focus-visible {
+    border-color: var(--accent);
+    border-left-color: var(--accent);
+    background: var(--surface-hover);
+  }
+
+  .link-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .link-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .link-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent);
+  }
+
+  .link-card:hover .link-title,
+  .link-card:focus-visible .link-title {
+    color: var(--accent-dark);
+    text-decoration: underline;
+  }
+
+  .arrow {
+    flex: none;
+    color: var(--text-muted);
+    transition: transform 0.15s ease, color 0.15s ease;
+  }
+
+  .link-card:hover .arrow,
+  .link-card:focus-visible .arrow {
+    transform: translate(2px, -2px);
+    color: var(--accent);
+  }
+
+  .link-desc {
+    color: var(--text);
+    font-size: 0.92rem;
+    max-width: 44rem;
+  }
+
+  .link-url {
+    display: block;
+    margin-top: 0.55rem;
+    font-family: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    word-break: break-all;
+  }
+
+  .contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .contact-card {
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--line);
+    border-radius: 3px;
+    padding: 1.05rem 1.25rem;
+  }
+
+  .contact-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  .contact-role {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  .contact-mail-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+  }
+
+  .contact-mail {
+    font-family: SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .contact-mail:hover,
+  .contact-mail:focus-visible {
+    color: var(--accent-dark);
+    text-decoration: underline;
+  }
+
+  .copy-btn {
+    appearance: none;
+    flex: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+
+  .copy-btn svg { width: 13px; height: 13px; }
+  .copy-btn .icon-check { display: none; }
+
+  .copy-btn:hover,
+  .copy-btn:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .copy-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .copy-btn.copied {
+    border-color: var(--accent);
+    background: var(--surface-hover);
+    color: var(--accent-dark);
+  }
+
+  .copy-btn.copied .icon-copy { display: none; }
+  .copy-btn.copied .icon-check { display: block; }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line-soft);
+    font-family: Lato, sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link-card, .link-title, .arrow { transition: none; }
+  }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2 L14.2 9.8 L22 12 L14.2 14.2 L12 22 L9.8 14.2 L2 12 L9.8 9.8 Z" fill="currentColor"/>
+      </svg>
+      Polaris
+    </div>
+  </div>
+</div>
+
+<main>
+  <header>
+    <div class="eyebrow">Resources · Learning Analytics</div>
+    <h1>POLARIS</h1>
+    <p class="subtitle">Provider Oriented Open Learning Analytics</p>
+    <p class="lede">
+      <strong>POLARIS</strong> is an open-source Learning Analytics platform developed under the
+      coordination of RWTH Aachen as part of the second funding phase of KI:edu.nrw. It combines
+      learning data from multiple source systems and governs their use through privacy-compliant
+      role and consent management. It is currently piloted at RWTH Aachen and Ruhr-Universität Bochum.
+    </p>
+
+    <div class="qr-box">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAAE2AQAAAADDx4MEAAACHElEQVR4nO1aQWrEMAyUksAenR95n548pQ8oOMdCjIpk2Qmtuw0UO4dqDt54YwhYjGYkGwmuIA6XlgHYujqu7gvQUp4EMvVEBJ72/Mrtts91NNgXJ3HYAVacAHwYCWBDhHU+xcjiUUeLfYmIODMrQkR8uh1okYHfr4jY6rtXMPyzddOXOQHEKWmKD7Hddwdb9+u+cILC5zbl4ad1rzDYur/quVP9IAoi5Tv/zSLCSSvph+n5Hf5qOaTD6aCwePSLxwlirYQaMDIrjjfmd7vl53WO7G2j2KhvWEVTTBf6+iv0gZ0VcFAcP24zJqfl36ad1vnddLqONvkKEkTAQ6kCRT90sHjU0UDP3a5VuQ8q71SG0jmxeNTRxl/RUZD7k6gzU2Rq/OiYrwL/OG0gZmqMbLc0HlZ/9I3HmLlQ4kGSudjvcmSMH93rj+VECGDwNL8w/eier7z0SzI/BJkpxo9XGBqsGwnWOQ9yHLKwnCSrCxHt/KOv3yW1uoeAkwzcWRS/a/6qt5770qnSfDVqf9f04xZ+CJgkRxQoRUa78VYP1tGyv7ucDjyoDNYv6dzfRYXyY5MWI5+kS3txewh7jB91tLxfAtuD5D4D8nmtloJqiS0edTTqJ0LR7uR3wfTjGoaG6zx95KTlmCSJH+k2kPGjjtb8oFKVkxov6yfedr+EtACk0oO384+b75fA6dYuaOfd6vN+8UC7317FXXr5Cfjw5MXC6iJUAAAAAElFTkSuQmCC" alt="QR code to demo-links">
+      <div class="qr-box-text">
+        <span class="qr-box-label">Scan for this page</span>
+        <span class="qr-box-url">polaris-rub.github.io/demo-links/</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <h2>Documentation</h2>
+      <span class="count">2</span>
+    </div>
+    <div class="links">
+      <a class="link-card" href="https://polaris.pages.rwth-aachen.de/rights-engine/" target="_blank" rel="noopener"><div class="link-main">
+        <div class="link-top">
+          <span class="link-title">Rights Engine — Documentation</span>
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="link-desc">
+          Main documentation for POLARIS's three components — Rights Engine, Analytics Engine, and
+          Dashboard: provider schemas, the xAPI format, Moodle/ILIAS integration, deployment, and
+          Shibboleth authentication.
+        </p>
+        <span class="link-url">polaris.pages.rwth-aachen.de/rights-engine/</span>
+        </div>
+        <img class="link-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAV4AAAFeAQAAAADlUEq3AAACxklEQVR4nO1bW2rkMBCstg3zacMeYI7iXC03Gx8lBwh4PgfG9NIPyRqyEC8bQm+m68uRm9CopqTqlkyMw9i647FABn/PbIAv+9N4BzAy29O89oyZZUwx3pOUFnFmY2TBHcD1xHzBRv403khj9L0wHSfn4+ieIXgjognAzDfC/DaI3pS83pfYhYiC5XwY3U8PHprn5aVnwsiged1kYBt4md6/I40ug79iNmbV4Arwq0hSltIv+s+fIoP/SYO9ELUJZb8Yy7SCbHy8kVE4O5M5zy3izMaVBAOwnHX328i86KJCBKDv6SVSzsfR/fRgmNF0t9lL+cCiuFpImFM1uxok5y6DW5TaD14AQotCKxT9T2Z/kVPXIlRFz0VlUBp38kyI6m4uyWBQBgWuvNEXUNUls+jyYSxIzl0Gf2BQ10nW/prsg+0CKvyW5TWnrkWofZBNdFyWzdppcy6d0CA5dxncwmyKOtC57nkmyWJD/UV60ZA/JBSVoVWemc+qUBtLBoMy2Ox0iupAd5guk8GwDN7LIeFYqgk7bNKyXgsJjwuSc5fBf2BQiga3nL7xlQPfamfSyYT8IcGJenClzltLXjqZyAxy6YaOO29aGfpSaiGpwagMstsUPIjucVFNJxOZwUttvWC3oVWXuiMqydlVi8qgwXqgbWPGxupSmqto4BPeAURnbWDLae7klSHR+Q5+pdNeUsTJ+Ti6Z1lFV98Rm65aWyiqTrMejMngjote9q3H83rqaxeAxZAmg//BnW14j7tp0XiFoQynBiMyOACjam2Tp3diXCeR3wSWDdJNzJXAcXLuMrhF04ThUhn6iz3ITWpOXYuAs7FMPeu9w9qEKZXh20kukkbM+VM8WfBGuhnK3VAYb/MqH8LI1zDzGjPnZw9GtSnwGqJUE+5p8qZTfAbRPnHtbDuNdt8i98GwDFJ+w9sgCCl/pcHf8XhyL2hJIRYAAAAASUVORK5CYII=" alt="QR-Code">
+      </a>
+
+      <a class="link-card" href="https://git.rwth-aachen.de/polaris/rights-engine/-/blob/prototyp-ui-analytics/docs/docs/handbook/" target="_blank" rel="noopener"><div class="link-main">
+        <div class="link-top">
+          <span class="link-title">Admin &amp; User Handbook</span>
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="link-desc">
+          Role-based handbook for operating the Rights Engine through the web interface — with chapters
+          for administration, provider management, analysis, and end users. Reflects the
+          <em>prototyp-ui-analytics</em> development branch.
+        </p>
+        <span class="link-url">git.rwth-aachen.de/polaris/rights-engine/.../docs/handbook/</span>
+        </div>
+        <img class="link-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAa4AAAGuAQAAAADgjt83AAADyElEQVR4nO1cXYrjMAyW4sI8OrAHmKOkN5gjDXOz5ih7gILzuOCiRbLsOBMWlpL9yUh6MElqQZ2IT9In2UjwhDyGZ7QAXO2crwTo1q4oBSJK9dmUZJBngQBirjNjPsXaBlc7zkoisWSQASYiKrZxAxlYov4qM+nmVmLQJh+IOALAzAPf0sf4QHxPD4RJLCfVX2dE/Dd/8gkZnlECV9vLZXMXCGcMBJNEK0vIYhIkzzbiH2AnZl7JwjYTM+B1QcQrCJYQhyQ/+Pb/+JO/L6521Cu5CIKwn2EDuaNgBs1jyCADLCPA9P2FYH7jYFYxxT/ATr74K1mQpbqeeXyggEcZ5tcM9PHKtwAgMxlVzrK2Z2R4Sgu+stqlwUPvdqbE0LJcAPkKIQaSoc5xvsReJpz1qmTCSYxBQtjc2BS9bfNOsbbB1Q58JaFwIwDLS4lUGUvYxQTCdzEV8T3ilNik5tE/gFksAYUMKlhSqVh+JnxsodYKBXeKtQ2udpiVsCgRX31KNZXVNvgHvip8rHOvxmwSirPRoCOUco06oHYlsYpS92JDjiUmsQSi+hkQO2g/FLfTCoI6z7HEZE2YShG4OJYalzRAqdmO3IrpOJbYw5Lcar2klWCFEbWcCjcel9jOcUgSnRJ5kEYoXfLzmUNxj2PU40SBEVCPo75HSTb5VbuQZJ5biU0sodKAlIu9NMjg/jWe1Dsb515NxiVJc90quXIoJVZZI9qGOY4lNq1ERGmRXGPW1gHbSNliQ24lVlm11IWmsDa/KqDwxEKkOF9itzsauqu4TYxXvqQEJ14TttmrtlwywfKN+9IQSLrW5rc7F4BREIRQqsPaaZLOs7bB1Q6NS0hJE6pY0iIUmdKYtha1+AfYiQmGPmhNeFqrw7HfmbMtCJ5ibYOrHc3Q5xqf/pJIKXyJ13EMW0laN/OF6oAqvnSuyPtLLO8AvXU1G+gdkEzRMEUrgM6XmN0nnCpuULtaXUxLh1U8LjFax0lrbyO0wLU9q930zpcYZ9VCS4dz65gO2+pwR+KfYm2Dqx3bQz/V0q/IJvVV6c6o8DqONZuEVgreYAmI1GLxrgXFscQiqybSNw2kPjHeNNd7D73NOk4Ub/O4wHyVDX5c0eGjbqY08skUsrn8Xrb68ZBPs7bB1Q7e2xdXPwMdoHS7/DaY4x9gJ7ZeSWSjWfhgrLJjmE+r4JMpSnqT+HgK3ydsGktC13HUVYIbfVI0HEuscq+09gtUWXfm3HYp8inWNrjaH8hxbnUHaGc57Vk9Yc176A3aJPrZ0af8bsNfVfsJhmHLqe6M41UAAAAASUVORK5CYII=" alt="QR-Code">
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Source Code</h2>
+      <span class="count">1</span>
+    </div>
+    <div class="links">
+      <a class="link-card" href="https://git.rwth-aachen.de/groups/polaris" target="_blank" rel="noopener"><div class="link-main">
+        <div class="link-top">
+          <span class="link-title">Polaris — GitLab Group</span>
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="link-desc">
+          All sub-projects in one place — including Rights Engine, Analytics Engine, Dashboard SDK,
+          the Moodle connector, deployment tooling, and the Shibboleth connector resolver.
+        </p>
+        <span class="link-url">git.rwth-aachen.de/groups/polaris</span>
+        </div>
+        <img class="link-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAAE2AQAAAADDx4MEAAACZElEQVR4nO1aQY7CMAwcJ5X2mEo8gKe0P9gn7dfIU/YBK7VHpFReOXYXWHHgQlpCLFSi1BIk7tieaYjxiC3uITeg+d23R/cFfLoZ8QmebS6k9VZIbZ/v2xP2JbCY7H1gxqCjBOYJyLckPC0e9+0Z+7IQUQ9g+O5ARB3oa/Ksc5GInvW7j5h7M7/uahxHL18LMeYeDCzb/z/3xn7DtBCfQgLRkZnGvf2/d8GHlx5LsBAYNHx/MOJIa4z4NdbhauyvQvp/MWv9VTl8DBcGMudq4hkZJAacbI1/lMNHSFI6cv3IDW76a3XzSILS8FEyX3nFgiWoS6rSi/CPFo+SfDBpa2X5ar0YNISdfE27r4OuEj/cpiUbDcrLWeYaPgrHY1pTlUYhlw6ZU7NKsvfnylVWP0KGgehXWtn9OjI5a+/rcJX4QRGQpV1FhULDqMcqNLZ4lK3nEJDE45n0Amm3JBREvSJl78+Vq8QPBg0p6pavvGau9U1ILu8NH+X4+dSDBBA0TIv0uguJ8q4Ji4apb3p70XjET2EZc08cybNEJpmYGCYgHlPHL4BzV4kflGZcN1RiucZL+lJO0vJVQb197sFaxUVvx3ywVJU/pjHu/rlylfiBL2bKu1d6uBZ1sdbvlotbJLN/d2iUyq7ye+t3tzpfwn/yO5vwKy/W+93j3FXi10mD2wHhJ4u8MlrWd7izwCP8tH53o7jF3uQTZJV91KB8tPNXW+IoUner+Wb5ZPc4dxWeLxkmCEk/JMTPsxzCyv3uIRP3va/DVcQ/yMZxhJyCO5NUEuPnQHqJdbhK/Kidb79rW/HBXzailqBfs/ANAAAAAElFTkSuQmCC" alt="QR-Code">
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Project Background</h2>
+      <span class="count">1</span>
+    </div>
+    <div class="links">
+      <a class="link-card" href="https://ki-edu-nrw.ruhr-uni-bochum.de/ueber-das-projekt/phase-2/learning-analytics/polaris/" target="_blank" rel="noopener"><div class="link-main">
+        <div class="link-top">
+          <span class="link-title">POLARIS at KI:edu.nrw</span>
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="link-desc">
+          KI:edu.nrw's introduction to the funded project: its origins, the pilot in Aachen and
+          Bochum, transfer and practice projects, and contacts on the Learning Analytics sub-project.
+          (Page is in German.)
+        </p>
+        <span class="link-url">ki-edu-nrw.ruhr-uni-bochum.de/.../learning-analytics/polaris/</span>
+        </div>
+        <img class="link-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAa4AAAGuAQAAAADgjt83AAADpElEQVR4nO1cy43jMAyl5ABzdDpIKZ4OtqbtzCllChggOQ6QgAv+RDm5LALPQSF5COTIPMh+IB+pJxeEF+xeX/ECSLcxHwng2kZ4oR9EAs6EsOANdHSZEGDmS7L5NsTaarrt90hmRoZCoJAh4k/B9Xqgf+7F0cR30ihfwJO9+yO5l1KOfDURBChukJ1PBInLhPhXZum/UspQa3vB6itO8NZugCtnkvlGgeImaUcmCCCw0CXlHpnlgLJmxonsdv3AUk6o2GjJBs7lA0df2/9buj0brsZLeASSdjy+MHHlLCThhnhJxpJ44LoyY1Wmiuv809FVOJ+Ix870Y9y2fI6ztlesvuQF7+wG2JlVwgIQSTsUVXTkN2YlHI+9ohARzjPICUiykCUb6aFw02RJlMRFCZtTEmzVjlTCVB1rv0TRNMTaarrtl3EuNuxbrBONGDzKWTXc8H2ZcYJhEqTtqgBBbaNJ7vGbujJIfoZYW023fTPOaiQVdURspCUbZSgtASVKgmESjIgoZwWKG17P6KV07RkvEn2GWFtNt50r4UsLI6iVsAYZqXGc0Qp1yRfwZO/8SKDPKUo6tEGidFWVA8pfJOYkSiLqS1Ba8mSMjUZEjNHqSPCSKIlZCSOz0m6EVv8+ElzWoWQsialVW0QWMJlCzTb6lNt66z4r4aixZNKipqnRQCasQbJpqCUvidyhvxklQQsevqPTAkrTIw2xtppuuz2S5YvlAKozKp8sEGAJY6d7bRUQC5WO+QJiVsKoHRHQLT/b/GvkxJINFToZS4JWwuDYILMtPxVLN5TknnBg9op+KGc1bJg6ejOrlrwk4p4wushkMSR47lG8SCyRYnmItdV027lfclF9CW67JH3nxDQn2VULh0nY9FmnTmRivXq7T3tumXGi7wmDyUg6ctJmtXWfXbXYvASatAR8Z88ZinTVNAsNsbaabvufAAXewlk60PSntpzbJkriZpzJlK3gygGvbLZq+owlMc/jkFl5g9Zi3YpMpGmigWeItdV0+4WzfWuTvLqY0UGjE4mSgJiEx28hrR5G/Minn77IfZyIbgeAmeuW+wHOfxDK8qWfo0C4FkCeADpNrkJ6uu/4PcTaarrtX+Ng1zSZZevX1K5Ga9sH1/IFPFkUlKz+BaSuS+JNk05KPcTaarr9RizB7izFU/EjBJf/SJQE/hYSWsZ5OvLJY8k9qUIKXuOsTR3dVCWby46wDLG2mm47PZKS345+tAQXPNo/dMFiEZv1hFkAAAAASUVORK5CYII=" alt="QR-Code">
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Examples</h2>
+      <span class="count">1</span>
+    </div>
+    <div class="links">
+      <a class="link-card" href="./praxisbeispiel-visual-editor.html"><div class="link-main">
+        <div class="link-top">
+          <span class="link-title">Example: Visual Pipeline Editor</span>
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="link-desc">
+          A worked example with four nodes: a statement loader, a statement filter, a Python snippet,
+          and a save-results node compute the average quiz score per course.
+        </p>
+        <span class="link-url">praxisbeispiel-visual-editor.html</span>
+        </div>
+        <img class="link-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYYAAAGGAQAAAABX+xtIAAADN0lEQVR4nO1cza3bMAwmZQM5Khu8Ufw26EhFN5NH6QAB7GMBGywokpLSS52iLfT0yEMgOyIQ6RP/qSDBa3SGFxkAnKOvvQJKZUR0ACz5Y5uIaJsIlo2nxMMmxcMRvE6hSw6gFInpgAxyM+LDoHBHfseUHPMxMD8U1QQm2EJbK/tkR6DPdQTnuEzz09OJsN55sN+BIB6zjlry3b1O4YNwRBKMEe8T4Xs15R9sHb+j8Kk5JtHjQsv3GWC9Z3t+In3DGyGy7C8kh6HfdbxG4dNyzAA72kN8zLS+/UCC+EDV6DxavwDopNjpOoJzXKYZlsZcT4QANwLY2c7nD6Zlqzbd4/MPfxKhBt/ZV8/Ai1HXSD2r9aNMcb99BMxBjbWOMshb/aIN4mBxzEfAnEmj8uzISbie5ZwsGSdynhWAy/kImG9VmSv65qOz885ZOlb/lMlzMsNgTtRodD4CWZlrcPZE0eV8AMxTAVkecxZW/DpV61nYQbSA2/PB5JzMW5f0u6l1tfHg9nwUzFMDKCtzQTq78Vpms3NA7sMNgjlZBVUdOaumqdNWS+xRlH6f6wjOcZ0oG+vitNVHDeLKu8XjcxiDAzThIoJdWmSEfvHmyHX7IJiTdD+pKa/NUI09f4rUw3/4VcE5/nkejpq061P2TZtlyjnwfPtAeTjQ+NzeQZuAlZa5TcS+z3UE5/gLeTgqzntNxYLn4QY4iVAcNg3NhQx91egm9i7no2B+VGPd5F/MfSsKIHp8PgrmyfKs5rdbrbwpqErBze35OJiTllfa+nmJ1eQITDUR3+c6gnO8tFcnmj0vzVDiy58o77gvEqw/1nf3OoUuOaDpiqhZ2KaMmh25MtljtSEwr5TrKTKqDVL55pqV2bx+PgbmqYxqEb2x58WrT2ro+1xHcI7LFJq4bH0rLc0bX1viC0zvtYtmv2VV4Lt7nUKXHDO7ajNfV+GniWC9P2bK75Z0Iq04HSi3WKLcbelzHcE5/myvdsRswBHxxugD4NdaY9n5govv7mD3zyMreQG5/vtArbWB2/NhMCfDV5x3y7IXN76Zl9yHGwJzaEdPct4m6Mia4vpcR3COy4T+v1GXaZRz9RM6wT/W+QgligAAAABJRU5ErkJggg==" alt="QR-Code">
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <h2>Contact</h2>
+      <span class="count">2</span>
+    </div>
+    <div class="contacts">
+      <div class="contact-card">
+        <span class="contact-name">Christian Metzger</span>
+        <span class="contact-role">IT staff · Learning Analytics sub-project</span>
+        <div class="contact-mail-row">
+          <a class="contact-mail" href="mailto:christian.metzger@rub.de">christian.metzger@rub.de</a>
+          <button type="button" class="copy-btn" data-email="christian.metzger@rub.de" aria-label="Copy email address">
+            <svg class="icon-copy" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke="currentColor" stroke-width="1.8"/></svg>
+            <svg class="icon-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="contact-card">
+        <span class="contact-name">Laura Platte</span>
+        <span class="contact-role">Media education staff · Learning Analytics sub-project</span>
+        <div class="contact-mail-row">
+          <a class="contact-mail" href="mailto:platte@cls.rwth-aachen.de">platte@cls.rwth-aachen.de</a>
+          <button type="button" class="copy-btn" data-email="platte@cls.rwth-aachen.de" aria-label="Copy email address">
+            <svg class="icon-copy" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="8" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" stroke="currentColor" stroke-width="1.8"/></svg>
+            <svg class="icon-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Compiled on August 26, 2026
+  </footer>
+</main>
+
+<script>
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    try { document.execCommand('copy'); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  function copyEmail(btn) {
+    var email = btn.getAttribute('data-email');
+    function onCopied() {
+      btn.classList.add('copied');
+      btn.setAttribute('aria-label', 'Copied');
+      clearTimeout(btn._copyTimeout);
+      btn._copyTimeout = setTimeout(function () {
+        btn.classList.remove('copied');
+        btn.setAttribute('aria-label', 'Copy email address');
+      }, 1500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(onCopied).catch(function () {
+        fallbackCopy(email);
+        onCopied();
+      });
+    } else {
+      fallbackCopy(email);
+      onCopied();
+    }
+  }
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () { copyEmail(btn); });
+  });
+</script>

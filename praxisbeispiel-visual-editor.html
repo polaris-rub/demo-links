@@ -1,0 +1,357 @@
+<title>Praxisbeispiel Visual Editor</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Lato:wght@400;700;900&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --bg: #fcfcfc;
+    --surface: #ffffff;
+    --text: #404040;
+    --text-muted: #6b6b6b;
+    --accent: #2980b9;
+    --accent-dark: #1c608e;
+    --dark: #343131;
+    --line: #e1e4e5;
+    --line-soft: #ebedee;
+    --code-bg: #f8f8f8;
+    --code-border: #e1e4e5;
+    --node-num-bg: #2980b9;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1c1a1a;
+      --surface: #252323;
+      --text: #e3e3e3;
+      --text-muted: #a8a8a8;
+      --accent: #5aa6d6;
+      --accent-dark: #86c0e6;
+      --dark: #0f0e0e;
+      --line: #3c3939;
+      --line-soft: #322f2f;
+      --code-bg: #201e1e;
+      --code-border: #3c3939;
+      --node-num-bg: #5aa6d6;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #1c1a1a;
+    --surface: #252323;
+    --text: #e3e3e3;
+    --text-muted: #a8a8a8;
+    --accent: #5aa6d6;
+    --accent-dark: #86c0e6;
+    --dark: #0f0e0e;
+    --line: #3c3939;
+    --line-soft: #322f2f;
+    --code-bg: #201e1e;
+    --code-border: #3c3939;
+    --node-num-bg: #5aa6d6;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Lato, "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .topbar { background: var(--accent); border-bottom: 4px solid var(--dark); }
+
+  .topbar-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fcfcfc;
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .brand svg { flex: none; }
+
+  .back-link {
+    color: #fcfcfc;
+    font-family: Lato, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    opacity: 0.9;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .back-link:hover { text-decoration: underline; opacity: 1; }
+
+  main { max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+  header { margin-bottom: 2.75rem; }
+
+  .eyebrow {
+    font-family: Lato, sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.9rem;
+  }
+
+  h1 {
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 5vw, 2.5rem);
+    line-height: 1.15;
+    margin: 0 0 0.9rem;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .lede {
+    max-width: 42rem;
+    color: var(--text);
+    font-size: 1rem;
+  }
+
+  .lede strong { font-weight: 700; }
+
+  .pipeline {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .node {
+    position: relative;
+    display: flex;
+    gap: 1.1rem;
+    padding-bottom: 2rem;
+  }
+
+  .node:last-child { padding-bottom: 0; }
+
+  .node-rail {
+    flex: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 2.2rem;
+  }
+
+  .node-num {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: var(--node-num-bg);
+    color: #fcfcfc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 700;
+    font-size: 1rem;
+    flex: none;
+  }
+
+  .node-line {
+    flex: 1;
+    width: 2px;
+    background: var(--line);
+    margin-top: 0.25rem;
+  }
+
+  .node:last-child .node-line { display: none; }
+
+  .node-body { flex: 1; min-width: 0; padding-top: 0.1rem; }
+
+  .node-type {
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--text);
+    margin: 0 0 0.15rem;
+  }
+
+  .node-role {
+    font-family: Lato, sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0 0 0.9rem;
+  }
+
+  .field-label {
+    font-family: Lato, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 0 0 0.4rem;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 0.9rem 1.1rem;
+    overflow-x: auto;
+    margin: 0;
+  }
+
+  code {
+    font-family: "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.84rem;
+    line-height: 1.55;
+    color: var(--text);
+    white-space: pre;
+  }
+
+  .condition {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 0.55rem 0.9rem;
+    font-family: "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.86rem;
+  }
+
+  .condition .op { color: var(--accent-dark); font-weight: 700; }
+
+  .context-id {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    font-family: "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9rem;
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 4px;
+    padding: 0.55rem 0.9rem;
+  }
+
+  .context-id .val { color: var(--accent-dark); font-weight: 700; }
+
+  footer {
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line-soft);
+    font-family: Lato, sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2 L14.2 9.8 L22 12 L14.2 14.2 L12 22 L9.8 14.2 L2 12 L9.8 9.8 Z" fill="currentColor"/>
+      </svg>
+      Polaris
+    </div>
+    <a class="back-link" href="./index.html">← Zur Übersicht</a>
+  </div>
+</div>
+
+<main>
+  <header>
+    <div class="eyebrow">Praxisbeispiel · Visueller Pipeline-Editor</div>
+    <h1>Durchschnittliche Quizpunktzahl je Kurs</h1>
+    <p class="lede">
+      Eine Analyse aus <strong>vier Knoten</strong>, die zeigt, wie sich mit dem visuellen
+      Pipeline-Editor aus eingehenden xAPI-Statements eine fertige Auswertung je Kurs bauen lässt:
+      vom Laden der Rohdaten über das Filtern bis zur Berechnung und Speicherung des Ergebnisses.
+    </p>
+  </header>
+
+  <div class="pipeline">
+    <div class="node">
+      <div class="node-rail">
+        <div class="node-num">1</div>
+        <div class="node-line"></div>
+      </div>
+      <div class="node-body">
+        <p class="node-type">Statement-Loader</p>
+        <p class="node-role">Lädt nur die Quiz-Antworten aus dem LRS.</p>
+        <p class="field-label">JSON-Filter</p>
+        <pre><code>{ "verb.id": "https://moodle.hs-beispiel.de/xapi/verbs/answered" }</code></pre>
+      </div>
+    </div>
+
+    <div class="node">
+      <div class="node-rail">
+        <div class="node-num">2</div>
+        <div class="node-line"></div>
+      </div>
+      <div class="node-body">
+        <p class="node-type">Statement-Filter</p>
+        <p class="node-role">Reduziert auf erfolgreiche Versuche.</p>
+        <p class="field-label">Bedingung</p>
+        <div class="condition">
+          <span>result.success</span>
+          <span class="op">==</span>
+          <span>true</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="node">
+      <div class="node-rail">
+        <div class="node-num">3</div>
+        <div class="node-line"></div>
+      </div>
+      <div class="node-body">
+        <p class="node-type">Python-Code-Snippet</p>
+        <p class="node-role">Berechnet je Kurs den Mittelwert des skalierten Scores.</p>
+        <p class="field-label">Code</p>
+        <pre><code>from collections import defaultdict
+
+summe  = defaultdict(float)
+anzahl = defaultdict(int)
+for stmt in in1_data:                      # Eingang in1 aus dem Filter
+    kurs  = stmt["context"]["platform"]
+    score = stmt["result"]["score"]["scaled"]
+    summe[kurs]  += score
+    anzahl[kurs] += 1
+
+out1_data = [
+    {"Kurs": k, "Schnitt": round(summe[k] / anzahl[k], 2)}
+    for k in summe
+]</code></pre>
+      </div>
+    </div>
+
+    <div class="node">
+      <div class="node-rail">
+        <div class="node-num">4</div>
+      </div>
+      <div class="node-body">
+        <p class="node-type">Save-Results</p>
+        <p class="node-role">Speichert die Liste unter einer Kontext-ID.</p>
+        <p class="field-label">Kontext-ID</p>
+        <div class="context-id">
+          <span class="val">quiz-schnitt</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>Zusammengestellt am 26. August 2026</footer>
+</main>
