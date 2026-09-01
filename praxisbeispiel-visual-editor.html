@@ -129,6 +129,41 @@
 
   .lede strong { font-weight: 700; }
 
+  .prereq {
+    max-width: 42rem;
+    margin-top: 1.5rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--surface);
+    border: 1px solid var(--code-border);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+  }
+
+  .prereq-label {
+    font-family: Lato, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin: 0 0 0.35rem;
+  }
+
+  .prereq p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .prereq code {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 3px;
+    padding: 0.05rem 0.3rem;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85em;
+  }
+
   .pipeline {
     margin-top: 2.5rem;
     display: flex;
@@ -279,6 +314,16 @@
       Pipeline-Editor aus eingehenden xAPI-Statements eine fertige Auswertung je Kurs bauen lässt:
       vom Laden der Rohdaten über das Filtern bis zur Berechnung und Speicherung des Ergebnisses.
     </p>
+    <div class="prereq">
+      <p class="prereq-label">Bevor Sie starten</p>
+      <p>
+        Prüfen Sie in den Einstellungen dieser Analyse unter
+        <strong>Konfiguration → Verfügbare Verben</strong>, dass die hier
+        benötigten Verben (hier: <code>answered</code>) für den verwendeten
+        Provider ausgewählt sind. Fehlt diese Freischaltung, liefert der
+        Statement-Loader keine Statements – ohne Fehlermeldung.
+      </p>
+    </div>
   </header>
 
   <div class="pipeline">
