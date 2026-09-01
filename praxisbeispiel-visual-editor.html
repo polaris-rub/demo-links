@@ -347,12 +347,12 @@
       </div>
       <div class="node-body">
         <p class="node-type">Statement-Filter</p>
-        <p class="node-role">Reduziert auf erfolgreiche Versuche.</p>
+        <p class="node-role">Reduziert auf überwiegend richtig beantwortete Versuche (Score ≥ 50 %).</p>
         <p class="field-label">Bedingung</p>
         <div class="condition">
-          <span>result.success</span>
-          <span class="op">==</span>
-          <span>true</span>
+          <span>result.score.scaled</span>
+          <span class="op">&gt;=</span>
+          <span>0.5</span>
         </div>
       </div>
     </div>
@@ -368,10 +368,19 @@
         <p class="field-label">Code</p>
         <pre><code>from collections import defaultdict
 
+def kurs_name(stmt):
+    grouping = stmt["context"].get("contextActivities", {}).get("grouping", [])
+    for eintrag in grouping:
+        definition = eintrag.get("definition", {})
+        if definition.get("type", "").endswith("/activities/course"):
+            name = definition.get("name", {})
+            return name.get("de") or name.get("en") or eintrag.get("id", "Unbekannt")
+    return "Unbekannt"
+
 summe  = defaultdict(float)
 anzahl = defaultdict(int)
 for stmt in in1_data:                      # Eingang in1 aus dem Filter
-    kurs  = stmt["context"]["platform"]
+    kurs  = kurs_name(stmt)
     score = stmt["result"]["score"]["scaled"]
     summe[kurs]  += score
     anzahl[kurs] += 1
