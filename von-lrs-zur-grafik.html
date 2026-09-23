@@ -502,8 +502,10 @@
         <div class="node-rail"><div class="node-num">2</div><div class="node-line"></div></div>
         <div class="node-body">
           <p class="node-type">Einwilligung prüfen</p>
-          <p class="node-role">Die Rights Engine prüft Verb und Kontext gegen die Einwilligung. Nur bei Zustimmung
-          wird das Statement im Learning Record Store gespeichert – sonst wird es abgelehnt.</p>
+          <p class="node-role">Die Rights Engine prüft Verb und Kontext gegen die Einwilligung. Gespeichert wird,
+          wenn eine gültige Einwilligung vorliegt oder das Verb ausdrücklich als nicht einwilligungspflichtig
+          markiert ist. Fehlt beides, wird das Statement je nach Konfiguration abgelehnt oder anonymisiert
+          gespeichert.</p>
         </div>
       </div>
       <div class="node">
